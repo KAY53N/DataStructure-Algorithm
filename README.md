@@ -1,5 +1,4 @@
-# DataStructureAndAlgorithm
-数据结构与算法练习
+# 数据结构与算法练习
 
 ####名词解释：<hr>
 __时间复杂度：__
