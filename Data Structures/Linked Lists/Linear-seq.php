@@ -1,7 +1,7 @@
 <?php
 class Linear_seq
 {
-	public $_cache = [];
+	protected $_cache = [];
 	function __construct()
 	{
 	}
@@ -19,6 +19,11 @@ class Linear_seq
 	function isEmpty()
 	{
 		return empty($this->_cache);
+	}
+
+	function getCache()
+	{
+		return $this->_cache;
 	}
 
 	function insert($value,$index)

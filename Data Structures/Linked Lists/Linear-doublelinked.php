@@ -200,7 +200,78 @@ class Linear_linked
 
 }
 
-$Linear_linked = new Linear_linked();
-$Linear_linked->insert('a', 0);
-$Linear_linked->insert('d', 4);
-print_r($Linear_linked->head());
+class Node_doublelinked extends Node_linked
+{
+    public $prev = NULL;
+    function __construct($value=NULL)
+    {
+        parent::__construct($value);
+    }
+}
+
+class Linear_doublelinked extends Linear_linked
+{
+    function __construct()
+    {
+        $this->_head = new Node_doublelinked();        
+    }
+
+    function insert($value,$index)
+    {
+        $length = $this->length();
+        if($index<0 || $index>$length)
+        {
+            return false;
+        }
+
+        $node = new Node_doublelinked($value);
+        $prev = $this->head();
+        for($i=0;$i<$index;$i++)
+        {
+            $prev = $prev->next;
+        }
+
+        $node->next = $prev->next;
+        $node->prev = $prev;
+        if($prev->next)
+        {
+            $prev->next->prev = $node;
+        }
+        $prev->next = $node;
+
+        return true;
+    }
+
+    function delete($index)
+    {
+        $length = $this->length();
+        if($index<0 || $index>$length-1)
+        {
+            return NULL;
+        }
+
+        $prev = $this->head();
+        for($i=0;$i<$index;$i++){
+            $prev = $prev->next;
+        }
+
+        $next = $prev->next;
+        $value = $next->data;
+        if($next->next)
+        {
+            $next->next->prev = $prev;
+        }
+
+        $prev->next = $next->next;
+        $next->next = NULL;
+        $next->prev = NULL;
+        unset($next);
+        return $value;
+    }
+}
+
+$Linear_doublelinked = new Linear_doublelinked();
+$Linear_doublelinked->insert('a', 0);
+$Linear_doublelinked->insert('b', 1);
+$Linear_doublelinked->insert('c', 2);
+print_r($Linear_doublelinked->head());
