@@ -24,7 +24,7 @@ Output Format
 For each query, print its answer on a new line (i.e., either YES x where  is the smallest first number of the increasing sequence, or NO).
 
 Sample Input 0
-
+```
 7
 1234
 91011
@@ -43,7 +43,7 @@ NO
 NO
 NO
 Explanation 0
-
+```
 The first three numbers are beautiful (see the diagram above). The remaining numbers are not beautiful:
 
 For , all possible splits violate the first and/or second conditions.
